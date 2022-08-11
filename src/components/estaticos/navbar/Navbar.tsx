@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { useDispatch } from "react-redux";
 import { addToken } from '../../../store/tokens/actions';
+import { toast } from 'react-toastify';
 
 function Navbar() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -17,7 +18,16 @@ function Navbar() {
 
     function goLogout() {
         dispatch(addToken(''));
-        alert("Usuário deslogado")
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
         history('/login')
     }
 
@@ -35,36 +45,36 @@ function Navbar() {
                 <Box display="flex" justifyContent="start">
                     <Link to="/home" className="text-decorator-none">
                         <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                home
+                            <Typography variant="h6" color="white">
+                                Home
                             </Typography>
                         </Box>
                     </Link>
                     <Link to="/posts" className="text-decorator-none">
                         <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                postagens
+                            <Typography variant="h6" color="white">
+                                Postagens
                             </Typography>
                         </Box>
                     </Link>
                     <Link to="/temas" className="text-decorator-none">
                         <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                temas
+                            <Typography variant="h6" color="white">
+                                Temas
                             </Typography>
                         </Box>
                     </Link>
                     <Link to="/formularioTema" className="text-decorator-none">
                         <Box mx={1} className='cursor'>
-                            <Typography variant="h6" color="inherit">
-                                cadastrar tema
+                            <Typography variant="h6" color="white">
+                                Cadastrar Tema
                             </Typography>
                         </Box>
                     </Link>
 
                     <Box mx={1} className='cursor' onClick={goLogout}>
-                        <Typography variant="h6" color="inherit">
-                            logout
+                        <Typography variant="h6" color="white">
+                            Logout
                         </Typography>
                     </Box>
 
